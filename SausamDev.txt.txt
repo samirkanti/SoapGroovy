@@ -1,0 +1,68 @@
+// Saurabh and Samir to collaborate and develop a Grrovy Script helping on
+//  + - * / AVG LARGER LCM GCD 
+
+class SausamDev {
+	def log;
+	def context;
+	def testRunner;
+	def z;
+	def SausamDev(log, context, testRunner){
+		this.log = log;
+		this.context = context;
+		this.testRunner = testRunner;
+	}
+
+	def sayHello(number1, number2, operation){
+		log.info ("Entered Num1, Num2, Operator As : " + number1 + " " + number2 + " " + operation);
+		switch(operation) {
+			case "+" :
+				z = number1 + number2
+				break;
+
+			case "-" :
+				z = number1 - number2
+				break
+
+			case "*" :
+				z = "Under Development"
+				break
+
+			case "/" :
+				z = "Under Development"
+				break
+				
+			case "AVG" :
+				z = ( number1 + number2 ) / 2
+				break
+				
+			case "LARGER" :
+				z = number1
+				if ( number2 - number1 > 0 ){
+					z = number2
+				}
+				break
+
+				case "LCM" :
+				z = "Under Development"
+				break
+
+				case "GCD" :
+				z = "Under Development"
+				break
+
+			default :
+				z = "Invalid Operator";
+				break				
+		}
+		
+		log.info (z)
+	
+	}
+}
+
+context.setProperty("SausamDev", new SausamDev(log, context, testRunner))
+
+
+
+
+
