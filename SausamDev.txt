@@ -1,0 +1,135 @@
+// Saurabh and Samir to collaborate and develop a Grrovy Script helping on
+//  + - * / AVG LARGER LCM GCD 
+
+class SausamDev {
+	def log;
+	def context;
+	def testRunner;
+	def z, s, l, d;
+	def SausamDev(log, context, testRunner){
+		this.log = log;
+		this.context = context;
+		this.testRunner = testRunner;
+	}
+
+	def helpCalculate(number1, number2, operation){
+		log.info ("Entered Num1, Num2, Operator As : " + number1 + " " + number2 + " " + operation);
+		switch(operation) {
+			case "+" :
+				z = number1 + number2
+				break;
+
+			case "-" :
+				z = number1 - number2
+				break
+
+			case "*" :
+				z = "Under Development"
+				break
+
+			case "/" :
+				z = "Under Development"
+				break
+				
+			case "AVG" :
+				z = ( number1 + number2 ) / 2
+				break
+				
+			case "LARGER" :
+				z = number1
+				if ( number2 - number1 > 0 ){
+					z = number2
+				}
+				break
+
+			case "LCM" :
+				
+				if (Math.abs(number1) != number1) {
+					log.info ( "*** Negative Num1 has been converted to positive number")
+					number1 = number1 * (-1)
+				}
+				if (Math.abs(number2) != number2) {
+					log.info ( "*** Negative Num2 has been converted to positive number")
+					number2 = number2 * (-1)
+				}
+				if (Math.ceil(number1) != Math.floor(number1)) {
+					log.info ( "*** Fractional Num1 has been converted to nearest positive integer")
+					number1 = Math.rint(number1)
+				}
+				if (Math.ceil(number2) != Math.floor(number2)) {
+					log.info ( "*** Fractional Num2 has been converted to nearest positive integer")
+					number2 = Math.rint(number2)
+				}
+				 
+				int l = number1
+				int s = number2
+				if ( number2 > number1 ) {
+					l = number2
+					s = number1
+				}
+				d = 1
+				z = "No LCM Exists"
+				while (d <= s) {
+					
+					z = l * d
+					if (z % s == 0) {
+						d = s ;
+					}
+					d = d + 1				
+				}
+				break
+
+				case "GCD" :
+				z = "Under Development"
+				if (Math.abs(number1) != number1) {
+					log.info ( "*** Negative Num1 has been converted to positive number")
+					number1 = number1 * (-1)
+				}
+				if (Math.abs(number2) != number2) {
+					log.info ( "*** Negative Num2 has been converted to positive number")
+					number2 = number2 * (-1)
+				}
+				if (Math.ceil(number1) != Math.floor(number1)) {
+					log.info ( "*** Fractional Num1 has been converted to nearest positive integer")
+					number1 = Math.rint(number1)
+				}
+				if (Math.ceil(number2) != Math.floor(number2)) {
+					log.info ( "*** Fractional Num2 has been converted to nearest positive integer")
+					number2 = Math.rint(number2)
+				}
+				 
+				int l = number1
+				int s = number2
+				if ( number2 > number1 ) {
+					l = number2
+					s = number1
+				}
+				d = s
+				z = s
+				while (d > 1) {
+					d = l % s 
+					if (d != 0) {
+						l = s
+						s = d
+					}
+					z = s	 				
+				}
+				
+				if ( z < 2 ) {
+					z = "No GCD exists"
+				}
+				break
+
+
+			default :
+				z = "Invalid Operator";
+				break				
+		}
+		
+		log.info (z)
+	
+	}
+}
+
+context.setProperty("SausamDev", new SausamDev(log, context, testRunner))
+
